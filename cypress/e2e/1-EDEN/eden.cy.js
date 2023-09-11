@@ -1,5 +1,6 @@
 /// <reference types="cypress" />
 
+const edenEvent= require("../../Pages/eden/edenEvent");
 const edenHeader = require("../../Pages/eden/edenHeader")
 const edenHome = require("../../Pages/eden/edenHome")
 
@@ -21,4 +22,19 @@ describe("TEST PAGINA EDEN", ()=>{
       cy.wrap(el).should("contain.text", menuButtons[inx])
     })
   });
+
+  it("Verificar logo", ()=>{
+    const imgSrc = "https://static.edenentradas.com.ar/sitio/images/logo.gif"
+    edenHeader.getEdenIcon().should("be.visible").and("have.prop", "naturalHeight").and("be.greaterThan", 0);
+    edenHeader.getEdenIcon().should("have.attr", "src", imgSrc );
+    edenHeader.getEdenIcon().should("have.attr", "alt");
+
+    });
+
+  it.only("Verificar busqueda", ()=>{
+    edenHome.getSearchInput().type("Creepy Halloween");
+    edenHome.getSearchSuggestion().first().click();
+    edenEvent.getEventTitle().should("contain.text", "Creepy Halloween/ La Mona Jimenez" );
+  })
+
 })
