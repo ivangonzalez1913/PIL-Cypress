@@ -10,6 +10,9 @@ class EdenHome{
     getSearchSuggestion(){
         return cy.get (".ui-menu-item")
     }
+    getFooter(){
+        return cy.get ("footer nav a")
+    }
 }
 
 export default new EdenHome

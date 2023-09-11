@@ -31,10 +31,23 @@ describe("TEST PAGINA EDEN", ()=>{
 
     });
 
-  it.only("Verificar busqueda", ()=>{
+  it("Verificar busqueda", ()=>{
     edenHome.getSearchInput().type("Creepy Halloween");
     edenHome.getSearchSuggestion().first().click();
     edenEvent.getEventTitle().should("contain.text", "Creepy Halloween/ La Mona Jimenez" );
+  })
+
+  it("Verificar botones footer", ()=>{
+    const footerButtons = [
+      "TERMINOS DE USO",
+      "QUIENES SOMOS",
+      "PUNTOS DE VENTA",
+      "CONTACTENOS",
+      "\n                                Arrepentimiento de Compra\n  ",
+    ]
+    edenHome.getFooter().each((el, inx)=>{
+      cy.wrap(el).should("contain.text", footerButtons[inx])
+    })
   })
 
 })
