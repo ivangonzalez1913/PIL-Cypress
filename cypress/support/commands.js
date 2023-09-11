@@ -23,3 +23,10 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add("validarFooterButtons", (id, url) => {
+  cy.get("footer .text-center a i")
+    .filter(id)
+    .parent()
+    .should("have.attr", "href", url);
+});
