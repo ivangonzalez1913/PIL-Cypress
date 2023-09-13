@@ -99,7 +99,7 @@ describe("TEST PAGINA EDEN", () => {
         }
       });
   });
-  it.only("Verificar punto de ventas", () => {
+  it("Verificar punto de ventas", () => {
     edenHome.getPuntosDeVenta().contains("PUNTOS DE VENTA").click();
     cy.fixture("puntodeventas.json").then((file) => {
       const info = file.info;

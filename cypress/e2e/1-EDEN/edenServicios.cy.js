@@ -42,7 +42,7 @@ describe("TEST SERVICIOS", () => {
       "cuartetos"
     );
   });
-  it.only("Verificar servicio de festivales", () => {
+  it("Verificar servicio de festivales", () => {
     cy.request({
       method: "GET",
       url: "https://edenapi.edenentradas.com.ar/edenventarestapi/api/contenido/eventos/festivales",
@@ -54,7 +54,7 @@ describe("TEST SERVICIOS", () => {
       expect(response.status).to.eq(200);
     });
   });
-  it.only("Validar schema festivales", () => {
+  it("Validar schema festivales", () => {
     cy.callServiceCheck(
       "GET",
       "https://edenapi.edenentradas.com.ar/edenventarestapi/api/contenido/eventos/festivales",
