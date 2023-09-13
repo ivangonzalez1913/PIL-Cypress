@@ -3,10 +3,11 @@
 const edenEvent = require("../../Pages/eden/edenEvent");
 const edenHeader = require("../../Pages/eden/edenHeader");
 const edenHome = require("../../Pages/eden/edenHome");
+const utils = require("../../Pages/utils");
 
 describe("TEST PAGINA EDEN", () => {
   beforeEach(() => {
-    cy.visit("https://www.edenentradas.com.ar/sitio/contenido/inicio");
+    cy.visit("https://www.edenentradas.com.ar/");
   });
   it("Verificar subtitulos", () => {
     edenHome.getSubtitles().first().should("contain.text", "BUSCAR EVENTO");
@@ -81,5 +82,21 @@ describe("TEST PAGINA EDEN", () => {
       "#social-wa",
       "//api.whatsapp.com/send?phone=5493516562003"
     );
+  });
+  it("Verificar calendario", () => {
+    const [dia, mes, year] = utils.getDate();
+    edenEvent.getCalendarTitle().should("contain.text", mes);
+    edenEvent.getCalendarTitle().should("contain.text", year);
+    edenEvent
+      .getCalendarTable()
+      .find("td")
+      .each((cuadradoDia, inx) => {
+        if (inx < dia) {
+          cy.wrap(cuadradoDia).should(
+            "have.class",
+            "ui-datepicker-unselectable ui-state-disabled"
+          );
+        }
+      });
   });
 });
