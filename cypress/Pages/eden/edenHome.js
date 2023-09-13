@@ -15,6 +15,12 @@ class EdenHome {
   getFooterGenericIcon() {
     return cy.get("footer .text-center a i");
   }
+  getPuntosDeVenta() {
+    return cy.get("footer .nav-link");
+  }
+  getPuntosDeVentaInfo() {
+    return cy.get(".desc-punto-venta.mt-2");
+  }
 }
 
 export default new EdenHome();

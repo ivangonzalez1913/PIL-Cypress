@@ -99,4 +99,17 @@ describe("TEST PAGINA EDEN", () => {
         }
       });
   });
+  it.only("Verificar punto de ventas", () => {
+    edenHome.getPuntosDeVenta().contains("PUNTOS DE VENTA").click();
+    cy.fixture("puntodeventas.json").then((file) => {
+      const info = file.info;
+      edenHome
+        .getPuntosDeVentaInfo()
+        .invoke("text")
+        .then((text) => {
+          text = text.replace(/\s+/g, " ").trim();
+          expect(text).to.equal(info);
+        });
+    });
+  });
 });
