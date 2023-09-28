@@ -1,3 +1,4 @@
 node_modules
 cypress/fixtures/autogenerado/
 cypress/downloads
+cypress/reports

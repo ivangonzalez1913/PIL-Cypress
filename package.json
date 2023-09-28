@@ -4,7 +4,8 @@
   "description": "curso cypress pil",
   "main": "index.js",
   "scripts": {
-    "test": "open"
+    "test": "open",
+    "delete:reports": "del /f /s /q \"cypress/reports\" 1>nul"
   },
   "keywords": [
     "cypress",
@@ -16,6 +17,11 @@
   "dependencies": {
     "@bahmutov/cy-grep": "^1.9.17",
     "ajv": "^8.12.0",
-    "cypress": "^13.1.0"
+    "cypress": "^13.1.0",
+    "mochawesome": "^7.1.3"
+  },
+  "devDependencies": {
+    "cypress-mochawesome-reporter": "^3.6.0",
+    "mochawesome": "^7.1.3"
   }
 }
